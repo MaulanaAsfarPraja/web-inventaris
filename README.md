@@ -39,6 +39,6 @@ Web inventaris adalah website Untuk mendata barang apa saja yang ada diLab IPI, 
 ## ERD
 Berikut adalah diagram ERD (Erd 3) untuk proyek ini:
 
-![ERD 3](Erd dan UML/erd3.png)
+![ERD 3](Erd_dan_UML/erd3.png)
 
 
