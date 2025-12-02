@@ -54,7 +54,7 @@ Berikut adalah diagram ERD (Erd 3) untuk proyek ini:
 ## UML
 Berikut adalah diagram UML Use Case 
 
-! [umlplant](Erd_dan_UML/umlplant.png)
+![umlplant](Erd_dan_UML/umlplant.png)
 
 ## Login
         Admin
