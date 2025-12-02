@@ -31,10 +31,10 @@ Web inventaris adalah website Untuk mendata barang apa saja yang ada diLab IPI, 
 
 
 ### ISI PROJECT
-1.Crud Daftar Barang
-2.Crud Status Barang
-3.transaksi (keluar masuk nya barang)
-4.crud Petugas
+- Crud Daftar Barang
+- Crud Status Barang
+- transaksi (keluar masuk nya barang)
+- crud Petugas
 
 ## ERD 
 ![ERD](Erd%20dan%20UML/Erd.png)
