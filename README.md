@@ -37,6 +37,6 @@ Web inventaris adalah website Untuk mendata barang apa saja yang ada diLab IPI, 
 - crud Petugas
 
 ## ERD 
-![ERD](Erd%20dan%20UML/Erd.png)
+![ERD](Erd%20dan%20UML/Erd3.png)
 
 
