@@ -2,20 +2,29 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Barang extends Model
 {
-    use HasFactory;
+    protected $table = 'barangs';
+    protected $guarded = [];
 
     protected $fillable = [
         'nama_barang',
-        'jumlah',
-        'satuan',
         'kondisi_bagus',
         'kondisi_rusak',
-        'total',
-        'keterangan',
+        'keterangan'
     ];
+
+    protected $appends = ['total'];
+
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class);
+    }
+
+    public function getTotalAttribute()
+    {
+        return $this->kondisi_bagus + $this->kondisi_rusak;
+    }
 }

@@ -2,20 +2,19 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Transaksi extends Model
 {
-    use HasFactory;
     protected $table = 'transaksis';
+    protected $guarded = [];
 
     protected $fillable = [
         'barang_id',
+        'tanggal',
         'jenis',
         'jumlah',
-        'tanggal',
-        'keterangan',
+        'keterangan'
     ];
 
     public function barang()
@@ -23,3 +22,4 @@ class Transaksi extends Model
         return $this->belongsTo(Barang::class);
     }
 }
+

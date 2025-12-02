@@ -10,24 +10,26 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 
 // Halaman login hanya untuk tamu
-Route::get('/login', [LoginController::class, 'index'])
+    Route::get('/login', [LoginController::class, 'index'])
     ->name('login')
     ->middleware('initamu');
 
-Route::post('/login', [LoginController::class, 'login'])
+    Route::post('/login', [LoginController::class, 'login'])
     ->name('login.post')
     ->middleware('initamu');
 
-// Logout user
-Route::post('/logout', [LoginController::class, 'logout'])
-    ->name('logout')
-    ->middleware('inilogin');
+    // Logout user
+    Route::post('/logout', [LoginController::class, 'logout'])
+        ->name('logout')
+        ->middleware('inilogin');
 
-// Group route untuk user yang sudah login
-Route::middleware(['inilogin'])->group(function () {
+    // Group route untuk user yang sudah login
+    Route::middleware(['inilogin'])->group(function () {
 
     // Dashboard
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    
+  
 
     // Profile
     Route::get('profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');

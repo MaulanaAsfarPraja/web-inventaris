@@ -37,8 +37,10 @@ class TransaksiController extends Controller
 
         // Update stok barang
         if ($request->jenis == 'masuk') {
+            // Transaksi masuk: tambah kondisi_bagus
             $barang->kondisi_bagus += $request->jumlah;
         } else {
+            // Transaksi keluar: kurang kondisi_bagus
             $barang->kondisi_bagus -= $request->jumlah;
         }
 
