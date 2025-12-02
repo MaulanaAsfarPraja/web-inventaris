@@ -59,3 +59,7 @@ use App\Http\Controllers\ProfileController;
 
     Route::resource('petugas', PetugasController::class)->middleware('inilogin');
 });
+
+Route::middleware(['inilogin','admin'])->group(function () {
+    Route::resource('petugas', PetugasController::class);
+});

@@ -5,6 +5,16 @@ Konsep Dari Web Yang Saya Buat
 
 Web inventaris adalah website Untuk mendata barang apa saja yang ada diLab IPI, lalu barang yang rusak ada berapa , dan yang baik ada berapa , dikarenakan Diipi Mendata nya masih manual/diketik.
 
+## cara mengithub
+- buat folder di github
+- lalu buka  project web-inventaris
+- lgit init
+- git add .
+- git commit -m "Nama bebas"
+- git branch -M main
+- git remote add origin nama link github nya
+- git push -u origin main
+
 ## Cara Setup project
  - mengclone project menggunakan git bash folder nya di xampp/htdocs lalu ketikan git clone https://github.com/MaulanaAsfarPraja/web-inventaris.git
  - buka project kamu di visual studio code, lalu ketikan diterminal composer install.
@@ -41,4 +51,18 @@ Berikut adalah diagram ERD (Erd 3) untuk proyek ini:
 
 ![ERD 3](Erd_dan_UML/erd3.png)
 
+## UML
+Berikut adalah diagram UML Use Case 
 
+! [Uml](Erd_dan_UML/Uml.jpeg)
+
+## Login
+        Admin
+Email : admin@gmail.com
+Password : 12345678
+
+        Petugas
+Email : petugas123@gmail.com
+Password : 123456789
+
+Penjelasan saya sudah sampai disini mohon maaf bila ada kesalahan,terimakasih bapak/ibu guru.

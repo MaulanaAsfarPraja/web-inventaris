@@ -79,40 +79,44 @@
                 </div>
 
                 <div class="p-4">
-                    <form action="{{ route('petugas.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        
-                        <div class="mb-4">
-                            <label class="form-label">Nama</label>
-                            <input type="text" name="nama" class="form-control" required>
-                        </div>
-                        
-                        <div class="mb-4">
-                            <label class="form-label">Jabatan</label>
-                            <input type="text" name="jabatan" class="form-control" required>
-                        </div>
-                        
-                        <div class="mb-4">
-                            <label class="form-label">No HP</label>
-                            <input type="text" name="no_hp" class="form-control">
-                        </div>
-                        
-                        <div class="mb-4">
-                            <label class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control" required>
-                        </div>
+                    @if(!(auth()->check() && auth()->user()->isAdmin()))
+                      <div class="alert alert-warning">Akses ditolak. Hanya admin yang dapat mengakses halaman ini.</div>
+                    @else
+                      <form action="{{ route('petugas.store') }}" method="POST" enctype="multipart/form-data">
+                          @csrf
+                          
+                          <div class="mb-4">
+                              <label class="form-label">Nama</label>
+                              <input type="text" name="nama" class="form-control" required>
+                          </div>
+                          
+                          <div class="mb-4">
+                              <label class="form-label">Jabatan</label>
+                              <input type="text" name="jabatan" class="form-control" required>
+                          </div>
+                          
+                          <div class="mb-4">
+                              <label class="form-label">No HP</label>
+                              <input type="text" name="no_hp" class="form-control">
+                          </div>
+                          
+                          <div class="mb-4">
+                              <label class="form-label">Email</label>
+                              <input type="email" name="email" class="form-control" required>
+                          </div>
 
-                        <div class="mb-4">
-                            <label class="form-label">Foto</label>
-                            <input type="file" name="foto" class="form-control" accept="image/*">
-                            <small class="form-text text-muted">Format: JPG, PNG. Ukuran maksimal: 2MB</small>
-                        </div>
+                          <div class="mb-4">
+                              <label class="form-label">Foto</label>
+                              <input type="file" name="foto" class="form-control" accept="image/*">
+                              <small class="form-text text-muted">Format: JPG, PNG. Ukuran maksimal: 2MB</small>
+                          </div>
 
-                        <div class="d-flex gap-2">
-                            <a href="{{ route('petugas.index') }}" class="btn btn-back">← Kembali</a>
-                            <button class="btn btn-save">✓ Simpan</button>
-                        </div>
-                    </form>
+                          <div class="d-flex gap-2">
+                              <a href="{{ route('petugas.index') }}" class="btn btn-back">← Kembali</a>
+                              <button class="btn btn-save">✓ Simpan</button>
+                          </div>
+                      </form>
+                    @endif
                 </div>
             </div>
         </div>

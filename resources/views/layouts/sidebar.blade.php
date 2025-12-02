@@ -40,12 +40,14 @@
                 </a>
             </li>
 
-            <li class="nav-item">
+            @if(auth()->check() && auth()->user()->isAdmin())
+              <li class="nav-item">
                 <a class="nav-link" href="{{ route('petugas.index') }}" style="padding: 12px 20px; transition: all 0.3s ease;">
                     <i class="fas fa-fw fa-users" style="margin-right: 10px;"></i>
                     <span style="font-weight: 500;">Petugas</span>
                 </a>
-            </li>
+              </li>
+            @endif
 
             <!-- Divider -->
             <hr class="sidebar-divider mt-5" style="border-top: 1px solid rgba(255,255,255,0.2);">

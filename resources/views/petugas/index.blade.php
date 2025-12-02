@@ -106,7 +106,10 @@
 
 <div class="page-header">
     <h2>👩‍💼 Data Petugas Lab</h2>
+    {{-- Tombol "Tambah Petugas" --}}
+    @if(auth()->check() && auth()->user()->isAdmin())
     <a href="{{ route('petugas.create') }}" class="btn btn-add">+ Tambah Petugas</a>
+    @endif
 </div>
 
 @if (session('success'))
@@ -151,12 +154,17 @@
                         <td style="padding: 12px;">{{ $p->no_hp }}</td>
                         <td style="padding: 12px;">{{ $p->email }}</td>
                         <td style="padding: 12px; text-align: center;">
-                            <a href="{{ route('petugas.edit', $p) }}" class="btn btn-sm btn-custom-edit">Edit</a>
-                            <form action="{{ route('petugas.destroy', $p) }}" method="POST" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-custom-delete" onclick="return confirm('Yakin hapus?')">Hapus</button>
-                            </form>
+                            @if(auth()->check() && auth()->user()->isAdmin())
+                                <a href="{{ route('petugas.edit', $p) }}" class="btn btn-sm btn-warning">Edit</a>
+
+                                <form method="POST" action="{{ route('petugas.destroy', $p->id) }}" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-sm btn-danger" onclick="return confirm('Hapus petugas?')">Hapus</button>
+                                </form>
+                            @else
+                                <span class="text-muted">Hanya admin</span>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

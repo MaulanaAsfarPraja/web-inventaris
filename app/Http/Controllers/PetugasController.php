@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class PetugasController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['inilogin', 'admin']);
+    }
+
     public function index()
     {
         $petugas = Petugas::paginate(10);

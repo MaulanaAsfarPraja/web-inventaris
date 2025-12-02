@@ -43,4 +43,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function isAdmin(): bool
+    {
+        if (isset($this->role)) {
+            return strtolower($this->role) === 'admin';
+        }
+        if (isset($this->level)) {
+            return strtolower($this->level) === 'admin';
+        }
+        if (isset($this->is_admin)) {
+            return (bool) $this->is_admin;
+        }
+
+        // fallback: akun demo admin
+        return in_array($this->email, ['admin@gmail.com']);
+    }
 }

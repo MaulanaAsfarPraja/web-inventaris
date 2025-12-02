@@ -92,58 +92,62 @@
                 </div>
 
                 <div class="p-4">
-                    <form action="{{ route('petugas.update', $petugas->id) }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
+                    @if(!(auth()->check() && auth()->user()->isAdmin()))
+                        <div class="alert alert-warning">Akses ditolak. Hanya admin yang dapat mengakses halaman ini.</div>
+                    @else
+                        <form action="{{ route('petugas.update', $petugas->id) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
 
-                        <div class="mb-4">
-                            <label class="form-label">Nama</label>
-                            <input type="text" name="nama" class="form-control" value="{{ $petugas->nama }}" required>
-                        </div>
+                            <div class="mb-4">
+                                <label class="form-label">Nama</label>
+                                <input type="text" name="nama" class="form-control" value="{{ $petugas->nama }}" required>
+                            </div>
 
-                        <div class="mb-4">
-                            <label class="form-label">Jabatan</label>
-                            <input type="text" name="jabatan" class="form-control" value="{{ $petugas->jabatan }}" required>
-                        </div>
+                            <div class="mb-4">
+                                <label class="form-label">Jabatan</label>
+                                <input type="text" name="jabatan" class="form-control" value="{{ $petugas->jabatan }}" required>
+                            </div>
 
-                        <div class="mb-4">
-                            <label class="form-label">No HP</label>
-                            <input type="text" name="no_hp" class="form-control" value="{{ $petugas->no_hp }}">
-                        </div>
+                            <div class="mb-4">
+                                <label class="form-label">No HP</label>
+                                <input type="text" name="no_hp" class="form-control" value="{{ $petugas->no_hp }}">
+                            </div>
 
-                        <div class="mb-4">
-                            <label class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control" value="{{ $petugas->email }}" required>
-                        </div>
+                            <div class="mb-4">
+                                <label class="form-label">Email</label>
+                                <input type="email" name="email" class="form-control" value="{{ $petugas->email }}" required>
+                            </div>
 
-                        <div class="photo-section">
-                            <label class="form-label" style="margin-bottom: 12px;">📷 Foto Saat Ini</label>
-                            @if ($petugas->foto)
-                                <div>
-                                    <img src="{{ asset('foto_petugas/' . $petugas->foto) }}" class="photo-preview img-thumbnail">
-                                </div>
-                                <div class="form-check mb-3">
-                                    <input type="checkbox" name="hapus_foto" id="hapus_foto" class="form-check-input" value="1">
-                                    <label class="form-check-label" for="hapus_foto">
-                                        Hapus foto lama
-                                    </label>
-                                </div>
-                            @else
-                                <p class="text-muted">Belum ada foto</p>
-                            @endif
-                        </div>
+                            <div class="photo-section">
+                                <label class="form-label" style="margin-bottom: 12px;">📷 Foto Saat Ini</label>
+                                @if ($petugas->foto)
+                                    <div>
+                                        <img src="{{ asset('foto_petugas/' . $petugas->foto) }}" class="photo-preview img-thumbnail">
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input type="checkbox" name="hapus_foto" id="hapus_foto" class="form-check-input" value="1">
+                                        <label class="form-check-label" for="hapus_foto">
+                                            Hapus foto lama
+                                        </label>
+                                    </div>
+                                @else
+                                    <p class="text-muted">Belum ada foto</p>
+                                @endif
+                            </div>
 
-                        <div class="mb-4">
-                            <label class="form-label">Upload Foto Baru</label>
-                            <input type="file" name="foto" class="form-control" accept="image/*">
-                            <small class="form-text text-muted">Format: JPG, PNG. Ukuran maksimal: 2MB</small>
-                        </div>
+                            <div class="mb-4">
+                                <label class="form-label">Upload Foto Baru</label>
+                                <input type="file" name="foto" class="form-control" accept="image/*">
+                                <small class="form-text text-muted">Format: JPG, PNG. Ukuran maksimal: 2MB</small>
+                            </div>
 
-                        <div class="d-flex gap-2">
-                            <a href="{{ route('petugas.index') }}" class="btn btn-back">← Kembali</a>
-                            <button type="submit" class="btn btn-update">✓ Update</button>
-                        </div>
-                    </form>
+                            <div class="d-flex gap-2">
+                                <a href="{{ route('petugas.index') }}" class="btn btn-back">← Kembali</a>
+                                <button type="submit" class="btn btn-update">✓ Update</button>
+                            </div>
+                        </form>
+                    @endif
                 </div>
             </div>
         </div>

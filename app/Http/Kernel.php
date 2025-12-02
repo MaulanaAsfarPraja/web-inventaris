@@ -48,5 +48,6 @@ class Kernel extends HttpKernel
         
         'inilogin' => \App\Http\Middleware\inilogin::class,  
         'initamu' => \App\Http\Middleware\initamu::class,
+        'admin' => \App\Http\Middleware\IsAdmin::class,
     ];
 }
